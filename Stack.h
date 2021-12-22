@@ -48,7 +48,7 @@ public:
         return this->size < other.size;
     }
 
-    Stack &operator=(const Stack <T> &other) { ///
+    Stack &operator=(const Stack <T> &other) {
         if (size!=0) {
             delete[] this->array_for_stack;
         }

@@ -30,6 +30,11 @@ private:
     static bool
     SimplifyMathExpression(Stack<Leksema> &stack_of_numbers, Stack<Leksema> &stack_of_operations, Leksema item);
 
+    //bool NumberNearNumber(Stack<Leksema> &stack_of_numbers, Stack<Leksema> &stack_of_operations);
+
+    //bool Calculate::SymbolsNear(char symbol);
+
+
 
 public:
     Calculate() = default;

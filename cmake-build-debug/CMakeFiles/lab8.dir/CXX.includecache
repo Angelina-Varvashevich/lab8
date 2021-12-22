@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+D:/clion/lab8/Calculate.cpp
+iostream
+-
+Calculate.h
+D:/clion/lab8/Calculate.h
+Stack.h
+D:/clion/lab8/Stack.h
+
 D:/clion/lab8/Calculate.h
 Stack.h
 D:/clion/lab8/Stack.h

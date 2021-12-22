@@ -49,12 +49,11 @@ Calculate::SimplifyMathExpression(Stack<Leksema> &stack_of_numbers, Stack<Leksem
     return true;
 }
 
-
 void Calculate::ReadExpression() {
     char symbol;
     while (10) {
         symbol = std::cin.peek();
-        if (symbol == '\n') // конец считывания
+        if (symbol == '\n')
         {
             break;
         }
@@ -73,6 +72,7 @@ void Calculate::ReadExpression() {
             continue;
         }
         if (symbol == '+' && flag == 0 || symbol == '-' && flag == 0 || symbol == '*' || symbol == '/') {
+
             if (stack_of_operations.Size() == 0) {
                 item.type = symbol;
                 item.value = 0;
@@ -80,6 +80,7 @@ void Calculate::ReadExpression() {
                 std::cin.ignore();
                 continue;
             }
+
             if (!stack_of_operations.isEmpty() && Priority(symbol) > Priority(stack_of_operations.GetTopValue().type)) {
                 item.type = symbol;
                 item.value = 0;
@@ -90,13 +91,14 @@ void Calculate::ReadExpression() {
             if (!stack_of_operations.isEmpty() &&
                 Priority(symbol) <= Priority(stack_of_operations.GetTopValue().type)) {
                 if (!SimplifyMathExpression(stack_of_numbers, stack_of_operations,
-                                            item)) {/// вызываем функцию, которая считает и записывает новое значение в стек
-                    std::cerr << "Something wrong" << std::endl; /////////////////////// исключение
+                                            item)) {
+                    std::cerr << "Something wrong" << std::endl;
                 }
                 continue;
             }
         }
         if (symbol == '(') {
+            flag=1;
             item.type = symbol;
             item.value = 0;
             stack_of_operations.push(item);
@@ -107,7 +109,7 @@ void Calculate::ReadExpression() {
             while (stack_of_operations.GetTopValue().type != '(') {
                 if (!SimplifyMathExpression(stack_of_numbers, stack_of_operations,
                                             item)) {
-                    throw std::runtime_error("Something wrong!");
+                    throw std::runtime_error("Incorrect input. Not enough )");
                 } else continue;
             }
             stack_of_operations.pop();
@@ -131,3 +133,32 @@ double Calculate::Result() {
 void Calculate::PrintResult(std::ostream &out) {
     std::cout << "Answer: " << stack_of_numbers.GetTopValue().value << std::endl;
 }
+
+/*bool Calculate::SymbolNearSymbol(Stack<Leksema> &stack_of_numbers, Stack<Leksema> &stack_of_operations){
+    if(stack_of_operations.Size()> stack_of_numbers.Size()-1) {
+        throw std::runtime_error("Number near number");
+    }
+    return true;
+}*/
+
+/*bool Calculate::SymbolsNear(char ch){
+    double fist_n = stack_of_numbers.GetTopValue().value;
+    stack_of_numbers.pop();
+    double prev_n = stack_of_numbers.GetTopValue().value;
+    stack_of_numbers.pop();
+    double current;
+    Leksema item;
+    if (fist_n && prev_n && ( ch=='-' && stack_of_operations.GetTopValue().type == '+') ){
+        current == prev_n - fist_n;
+    }
+
+    if (fist_n && prev_n && ( ch== '+' &&  stack_of_operations.GetTopValue().type == '-') ){
+        current == prev_n + fist_n;
+
+    }
+    item.value=current;
+    item.type='0';
+    stack_of_numbers.push(item);
+    return true;
+
+}*/
