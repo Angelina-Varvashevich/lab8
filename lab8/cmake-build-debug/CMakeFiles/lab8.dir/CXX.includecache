@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/clion/lab8/Calculate.h
+Stack.h
+D:/clion/lab8/Stack.h
+string
+-
+
+D:/clion/lab8/Stack.h
+iostream
+-
+
+D:/clion/lab8/main.cpp
+iostream
+-
+Stack.h
+D:/clion/lab8/Stack.h
+Calculate.h
+D:/clion/lab8/Calculate.h
+
